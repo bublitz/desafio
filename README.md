@@ -1,30 +1,30 @@
-# Desafio Técnico – Backend + Mobile
+# Desafio Técnico – Backend + Mobile (React Native)
 
-Este repositório contém a implementação do **backend** e do **mobile** desenvolvidos para o desafio técnico de Desenvolvedor(a) Sênior Mobile.
+Este repositório contém a implementação completa do **backend** e do **aplicativo mobile** desenvolvidos para o desafio técnico de **Desenvolvedor(a) Sênior Mobile**.
 
-O foco da solução está em **arquitetura**, **boas práticas**, **organização de código**, **testabilidade** e **clareza nas decisões técnicas**, não em design visual ou quantidade de funcionalidades.
+O foco da solução está em **arquitetura**, **boas práticas**, **organização de código**, **testabilidade** e **clareza nas decisões técnicas**, conforme solicitado no desafio.
 
 ---
 
-## 🧠 Visão Geral da Solução
+## Visão Geral da Solução
 
-A solução foi pensada em um modelo **backend-first**, onde:
+A solução foi construída seguindo um modelo **backend-first**, onde:
 
-- O backend expõe uma **API REST bem estruturada**
-- O mobile consome essa API de forma **desacoplada**
+- O backend expõe uma **API REST desacoplada e bem estruturada**
+- O mobile consome a API sem dependências diretas da UI
 - Configurações dinâmicas são fornecidas pelo servidor
-- As camadas possuem **responsabilidades bem definidas**
+- As camadas possuem **responsabilidades claras e bem definidas**
 
 ---
 
-## 📦 Tecnologias Utilizadas
+## Tecnologias Utilizadas
 
 ### Backend
 
 - Node.js
 - TypeScript
 - Fastify
-- Zod (validação)
+- Zod (validação de dados)
 - Jest (testes unitários)
 
 ### Mobile
@@ -32,31 +32,34 @@ A solução foi pensada em um modelo **backend-first**, onde:
 - React Native
 - TypeScript
 - Axios
-- Zustand
+- Zustand (gerenciamento de estado)
 - React Navigation
 
 ---
 
-## 🏗️ Arquitetura do Backend
+## Arquitetura do Backend
 
-Arquitetura inspirada em **Clean Architecture** e **ADR (Action–Domain–Responder)**.
+O backend segue uma abordagem inspirada em **Clean Architecture** e **ADR (Action–Domain–Responder)**.
 
-### Estrutura
+### Estrutura de pastas (Backend)
 
 ```
-src/
-├── api/
-├── app/
-│   ├── modules/
-│   └── core/
-└── tests/
+backend/
+└── src/
+    ├── api/
+    │   └── v1/
+    │       ├── tasks/
+    │       └── config/
+    ├── app/
+    │   └── modules/
+    └── tests/
 ```
 
-Separação clara entre:
+### Responsabilidades
 
-- HTTP
-- Regras de negócio
-- Acesso a dados
+- **Routes / Controllers**: camada HTTP (request/response)
+- **Services**: regras de negócio
+- **Repositories**: acesso a dados (em memória neste desafio)
 
 ---
 
@@ -68,7 +71,7 @@ npm install
 npm run dev
 ```
 
-Servidor:
+Servidor disponível em:
 
 ```
 http://localhost:3000
@@ -76,11 +79,25 @@ http://localhost:3000
 
 ---
 
-## 📱 Arquitetura do Mobile
+## Arquitetura do Mobile (React Native)
 
-Arquitetura baseada em **Clean + MVVM**.
+O mobile foi desenvolvido em **React Native com TypeScript**, utilizando uma arquitetura inspirada em **Clean Architecture + MVVM**.
 
-Fluxo:
+### Estrutura de pastas (Mobile)
+
+```
+mobile/
+└── src/
+    ├── screens/
+    ├── app/
+    │   ├── modules/
+    │   │   ├── tasks/
+    │   │   └── config/
+    │   └── shared/
+    └── App.tsx
+```
+
+### Fluxo de dados
 
 ```
 Screen → Hook (ViewModel) → Service → API → Backend
@@ -88,9 +105,12 @@ Screen → Hook (ViewModel) → Service → API → Backend
 
 ---
 
-## 🔮 Evoluções Futuras
+## Como rodar o Mobile
 
-- Autenticação JWT
-- Testes de integração
-- Escalabilidade e cache
-- Versionamento de API
+```bash
+cd mobile
+npm install
+npx react-native run-android
+```
+
+---
