@@ -114,3 +114,17 @@ npx react-native run-android
 ```
 
 ---
+
+## Como rodar os Testes
+
+```bash
+cd backend
+npm test
+```
+
+```bash
+cd mobile
+npm test
+```
+
+---
